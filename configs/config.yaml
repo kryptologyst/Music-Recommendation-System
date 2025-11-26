@@ -1,0 +1,42 @@
+# Music Recommendation System Configuration
+
+# Data settings
+data:
+  data_dir: "data"
+  test_size: 0.2
+  time_based_split: true
+  seed: 42
+
+# Model settings
+models:
+  content_based:
+    use_sentence_transformer: true
+    seed: 42
+  
+  collaborative_filtering:
+    model_type: "als"  # Options: als, bpr, lightfm
+    factors: 50
+    regularization: 0.01
+    iterations: 50
+    seed: 42
+  
+  hybrid:
+    content_weight: 0.3
+    collab_weight: 0.7
+    seed: 42
+
+# Evaluation settings
+evaluation:
+  k_values: [5, 10, 20]
+  n_recommendations: 20
+
+# Demo settings
+demo:
+  n_recommendations: 10
+  n_similar_items: 5
+  port: 8501
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
